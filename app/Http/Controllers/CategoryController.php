@@ -24,7 +24,12 @@ class CategoryController extends Controller
             'description' => 'required|max:255|string',  
             'is_active' => 'sometimes'
         ]);
-
-        Category::create();
+            
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'is_active' => $request->is_active == true ? 1:0,
+        ]);
+        return redirect("category/create")->with('status','Category Created');
     }
 }

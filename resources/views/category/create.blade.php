@@ -7,6 +7,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
+
+
+            @if (session('status'))
+                <div> {{session('status')}} </div>
+            @endif
+
             <div class="card">
                 <div class="card-header">
                     <h4>Categories</h4>
@@ -19,6 +25,7 @@
                         <div>
                             <label>Name</label>
                             <input type="text" name="name" class="form-control" value="{{ old('name') }}" />
+                            @error('name') <span>{{ $message}} </span> @enderror
                         </div>
 
                         <div>
